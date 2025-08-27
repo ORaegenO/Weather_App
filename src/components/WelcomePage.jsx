@@ -115,9 +115,17 @@ function WelcomePage() {
           </div>
           
           <p>Temperature: {convertTemp(weatherData.main.temp)}°{isCelsius ? 'C' : 'F'}</p>
-          <p>Feels like: {convertTemp(weatherData.main.feels_like)}°{isCelsius ? 'C' : 'F'}</p>
-          <p>Description: {weatherData.weather[0].description}</p>
+<p>Feels like: {convertTemp(weatherData.main.feels_like)}°{isCelsius ? 'C' : 'F'}</p>
+<p>Description: {weatherData.weather[0].description}</p>
 
+{/* New maritime data */}
+<div style={{ marginTop: '15px', borderTop: '1px solid #ccc', paddingTop: '15px' }}>
+  <h4>Maritime Conditions</h4>
+  <p>Wind: {weatherData.wind?.speed} m/s {weatherData.wind?.deg !== undefined ? `from ${weatherData.wind.deg}°` : ''}</p>
+  <p>Visibility: {weatherData.visibility ? (weatherData.visibility / 1000).toFixed(1) : 'N/A'} km</p>
+  <p>Sunrise: {new Date((weatherData.sys.sunrise + weatherData.timezone) * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', timeZone: 'UTC'})}</p>
+  <p>Sunset: {new Date((weatherData.sys.sunset + weatherData.timezone) * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', timeZone: 'UTC'})}</p>
+</div>
           {/* 5-Day Forecast */}
 {forecastData && (
   <div style={{ marginTop: '20px' }}>
