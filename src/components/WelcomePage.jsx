@@ -6,7 +6,9 @@ function WelcomePage() {
     const [weatherData, setWeatherData] = useState(null);
     const [isCelsius, setIsCelsius] = useState(true);
     const [forecastData, setForecastData] = useState(null);
-
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    
     const convertTemp = (temp) => {
       if (isCelsius) {
         return Math.round(temp);
@@ -20,33 +22,62 @@ function WelcomePage() {
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/weather?q=${locationQuery}&appid=${apiKey}&units=metric`
         );
+        
+        if (!response.ok) {
+          throw new Error(`City not found: ${response.status}`);
+        }
+        
         const weatherData = await response.json();
         console.log("Weather data:", weatherData);
         return weatherData;
       } catch (error) {
         console.error("Error fetching weather:", error);
+        throw error; // Re-throw so handleSearch can catch it
       }
     };
-
+    
     const fetchForecastData = async (locationQuery) => {
       try {
         const response = await fetch(
           `https://api.openweathermap.org/data/2.5/forecast?q=${locationQuery}&appid=${apiKey}&units=metric`
         );
+        
+        if (!response.ok) {
+          throw new Error(`Forecast not found: ${response.status}`);
+        }
+        
         const forecast = await response.json();
         console.log("Forecast data:", forecast);
         return forecast;
       } catch (error) {
         console.error("Error fetching forecast:", error);
+        throw error;
       }
     };
     
     const handleSearch = async () => {
-      console.log("Searching for:", location);
-      const weatherData = await fetchWeatherData(location);
-      const forecastData = await fetchForecastData(location);
-      setWeatherData(weatherData);
-      setForecastData(forecastData);
+      if (!location.trim()) {
+        setError("Please enter a city name");
+        return;
+      }
+      
+      setIsLoading(true);
+      setError(null);
+      setWeatherData(null);
+      setForecastData(null);
+      
+      try {
+        console.log("Searching for:", location);
+        const weatherData = await fetchWeatherData(location);
+        const forecastData = await fetchForecastData(location);
+        setWeatherData(weatherData);
+        setForecastData(forecastData);
+      } catch (error) {
+        setError("City not found. Please check the spelling, remember to use commas, and try again.");
+        console.error("Error details:", error.message);
+      } finally {
+        setIsLoading(false);
+      }
     };
     
   return (
@@ -63,6 +94,9 @@ function WelcomePage() {
       <button onClick={handleSearch}>
         Set Sail!
       </button>
+      
+      {isLoading && <p>Searching for treasure...</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       
       {weatherData && (
         <div>
