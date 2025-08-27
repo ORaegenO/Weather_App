@@ -121,8 +121,10 @@ function WelcomePage() {
 {/* New maritime data */}
 <div style={{ marginTop: '15px', borderTop: '1px solid #ccc', paddingTop: '15px' }}>
   <h4>Maritime Conditions</h4>
-  <p>Wind: {weatherData.wind?.speed} m/s {weatherData.wind?.deg !== undefined ? `from ${weatherData.wind.deg}°` : ''}</p>
-  <p>Visibility: {weatherData.visibility ? (weatherData.visibility / 1000).toFixed(1) : 'N/A'} km</p>
+  <p>Wind: {weatherData.wind?.speed ? (weatherData.wind.speed * 3.6).toFixed(1) : 'N/A'} km/h {weatherData.wind?.deg !== undefined ? `from ${weatherData.wind.deg}°` : ''}</p>
+  <p>Visibility: {weatherData.visibility ? 
+    weatherData.visibility >= 10000 ? 'Excellent (10+ km)' : `${(weatherData.visibility / 1000).toFixed(1)} km`
+    : 'N/A'}</p>
   <p>Sunrise: {new Date((weatherData.sys.sunrise + weatherData.timezone) * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', timeZone: 'UTC'})}</p>
   <p>Sunset: {new Date((weatherData.sys.sunset + weatherData.timezone) * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', timeZone: 'UTC'})}</p>
 </div>
