@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Georgia', 'Times New Roman', serif;
+  font-family: 'Spiky Chains', cursive;
   background: linear-gradient(135deg, #0c4a6e 0%, #0e7490 25%, #0891b2 50%, #06b6d4 75%, #67e8f9 100%);
   min-height: 100vh;
   color: #f0f9ff;
@@ -21,12 +21,21 @@ body {
 
 h1 {
   text-align: center;
-  font-size: 2.8rem;
+  font-size: 3.0rem;
   font-weight: bold;
   color: #f0f9ff;
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
   margin-bottom: 20px;
-  font-family: 'Georgia', serif;
+  font-family: 'Spiky Chains', cursive;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.0rem;
+  color: #f0f9ff;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  font-family: 'Spiky Chains', cursive;
 }
 
 p {
