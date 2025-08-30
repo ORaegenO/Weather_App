@@ -94,7 +94,7 @@ function WelcomePage() {
         setWeatherData(weatherData);
         setForecastData(forecastData);
       } catch (error) {
-        setError("Ye must be pullin' me peg-leg, ye scallywag! -- That port's make believe. Best be checkin' yer spelling and remeber yer commas.");
+        setError("Ye must be pullin' me peg-leg, ye scallywag! -- That port's make-believe. Best be checkin' yer spellin' and remeberin' yer commas.");
         console.error("Error details:", error.message);
       } finally {
         setIsLoading(false);
@@ -103,8 +103,8 @@ function WelcomePage() {
     
   return (
     <div className="welcome-page">
-      <h1>Avast,ye Matey! </h1>
-      <h2>Yer luck be true — ye’ve found the Deckhand’s Weather Chart.</h2>
+      <h1>Avast, ye Matey! </h1>
+      <h2>Yer luck be true — ye’ve found the Deckhand’s Weather Charts.</h2>
       <p>The skies ‘n seas be charted fer ye — today’s fate an’ five suns yet followin’, with winds, the moon, an’ all the portents ye need.</p>
       <p>Where be ye searchin' fer treasure today?</p>
       

@@ -81,7 +81,7 @@ input[type="text"]::placeholder {
 }
 
 button {
-  background: linear-gradient(45deg, #f43f5e, #ec4899);
+  background: linear-gradient(45deg, #c2359c, #ea4646);
   color: white;
   padding: 15px 30px;
   border: none;
@@ -95,7 +95,7 @@ button {
 }
 
 button:hover {
-  background: linear-gradient(45deg, #e11d48, #db2777);
+  background: linear-gradient(45deg, #e42750, #db2777);
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(244, 63, 94, 0.4);
 }
