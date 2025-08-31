@@ -103,6 +103,7 @@ function WelcomePage() {
     
   return (
     <div className="welcome-page">
+     <div className="content-container"> 
       <h1>Avast, ye Matey! </h1>
       <h2>Yer luck be true — ye’ve found the Deckhand’s Weather Charts.</h2>
       <p>The skies ‘n seas be charted fer ye — today’s fate an’ five suns yet followin’, with winds, the moon, an’ all the portents ye need.</p>
@@ -176,6 +177,7 @@ function WelcomePage() {
           )}
         </div>
       )}
+      </div>
     </div>
   );
 }

@@ -5,30 +5,37 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Spiky Chains', cursive;
+html {
   background: linear-gradient(135deg, #0c4a6e 0%, #0e7490 25%, #0891b2 50%, #06b6d4 75%, #67e8f9 100%);
-  min-height: 100vh;
-  color: #f0f9ff;
+  background-attachment: fixed;
+  min-height: 100%;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+body {
+  font-family: 'Spiky Chains', cursive;
+  background: transparent; /* Remove duplicate background */
+  min-height: 100vh;
+  color: #f0f9ff;
 }
 
 #root {
   min-height: 100vh;
   width: 100%;
+  background: transparent;
 }
 
 .welcome-page {
-  max-width: none; /* Remove the 800px limit */
   width: 100%;
   min-height: 100vh;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-container {
+  max-width: 1200px;
+  width: 100%;
 }
 
 h1 {
@@ -93,7 +100,7 @@ input[type="text"]::placeholder {
 }
 
 button {
-  background: linear-gradient(45deg, #c2359c, #ea4646);
+  background: linear-gradient(45deg, #ff7b7b, #ff9068, #ffb347);
   color: white;
   padding: 15px 30px;
   border: none;
@@ -101,16 +108,17 @@ button {
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(244, 63, 94, 0.3);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
   transition: all 0.3s ease;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
-  background: linear-gradient(45deg, #e42750, #db2777);
+  background: linear-gradient(45deg, #ff7b7b, #ff9068, #ffb347);
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(244, 63, 94, 0.4);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
 }
+
 
 button:active {
   transform: translateY(-1px);
@@ -143,8 +151,10 @@ button:active {
   border: 2px solid rgba(103, 232, 249, 0.3);
   border-radius: 20px;
   padding: 30px;
-  margin: 30px 0;
+  margin: 30px auto;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 1100px; /* Increase from 900px to fit forecast cards */
+  width: 100%;
 }
 
 .weather-container h2 {
@@ -253,8 +263,9 @@ button:active {
 
 .forecast-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(5, 180px);
   gap: 15px;
+  justify-content: center;
 }
 
 .forecast-day {
