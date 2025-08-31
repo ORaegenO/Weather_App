@@ -12,11 +12,23 @@ body {
   color: #f0f9ff;
 }
 
-.welcome-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#root {
   min-height: 100vh;
+  width: 100%;
+}
+
+.welcome-page {
+  max-width: none; /* Remove the 800px limit */
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 h1 {
