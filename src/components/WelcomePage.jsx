@@ -187,8 +187,7 @@ function WelcomePage() {
         <h2>Yer luck be true — ye've found the Deckhand's Weather Charts.</h2>
         <p>The skies 'n seas be charted fer ye — today's fate an' five suns yet followin', with winds, the moon, an' all the portents ye need.</p>
         <p>Where be ye searchin' fer treasure today?</p>
-        
-        // Search section
+
         <div className="search-section">
           <input
             type="text"
@@ -211,7 +210,6 @@ function WelcomePage() {
           <div className="weather-container">
             <h2>Weather in {weatherData.name}</h2>
             
-            // Temperature toggle
             <div className="temp-toggle">
               <span>°C</span>
               <input 
@@ -222,7 +220,6 @@ function WelcomePage() {
               <span>°F</span>
             </div>
             
-            // Current weather info
             <div className="weather-info">
               <p>Temperature: {convertTemp(weatherData.main.temp)}°{isCelsius ? 'C' : 'F'}</p>
               <p>Feels like: {convertTemp(weatherData.main.feels_like)}°{isCelsius ? 'C' : 'F'}</p>
